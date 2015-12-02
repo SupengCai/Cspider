@@ -1,436 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cspider>
-    <sites>
-        <site name="多玩WIIU" url="http://tv.duowan.com/tag/211480904710.html" topic="1000">
-            <scheduler class="dataBaseScheduler"/>
-            <spider class="com.supc.spider.spiders.DefaultSpider"/>
-            <downloader class="com.supc.spider.downloaders.DefaultDownloader"/>
+    <!--<scheduler class="dataBaseScheduler">-->
+        <!--<sites>-->
+            <!--<site name="游侠网最新资讯" url="http://www.ali213.net" topic="1005"/>-->
+        <!--</sites>-->
+        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
+        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
+        <!--<rule>-->
+            <!--<blocks>-->
+                <!--<tag name="div">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="class" value="ali-news-one-body"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</blocks>-->
+            <!--<contents>-->
+                <!--<tag name="a">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="href"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</contents>-->
+            <!--<rule>-->
+                <!--<blocks>-->
+                    <!--<tag name="div">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="class" value="new_lei"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</blocks>-->
+                <!--<contents>-->
+                    <!--<tag name="p"/>-->
+                    <!--<tag name="embed">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                    <!--<tag name="img">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</contents>-->
+            <!--</rule>-->
+        <!--</rule>-->
+    <!--</scheduler>-->
+    <!--<scheduler class="dataBaseScheduler">-->
+        <!--<sites>-->
+            <!--<site name="游侠网游戏攻略" url="http://gl.ali213.net/clsList/7_1.html" topic="1010"/>-->
+        <!--</sites>-->
+        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
+        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
+        <!--<rule>-->
+            <!--<blocks>-->
+                <!--<tag name="div">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="class" value="Ali_gl_shangsi_content"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</blocks>-->
+            <!--<contents>-->
+                <!--<tag name="a">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="href"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</contents>-->
+            <!--<rule>-->
+                <!--<blocks>-->
+                    <!--<tag name="div">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="class" value="glzjshow_con"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</blocks>-->
+                <!--<contents>-->
+                    <!--<tag name="p"/>-->
+                    <!--<tag name="embed">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                    <!--<tag name="img">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</contents>-->
+            <!--</rule>-->
+        <!--</rule>-->
+    <!--</scheduler>-->
+    <!--<scheduler class="dataBaseScheduler">-->
+        <!--<sites>-->
+            <!--<site name="游明星空PS4" url="http://tv.gamersky.com/ps" topic="1001"/>-->
+            <!--<site name="游明星空XBOXONE" url="http://tv.gamersky.com/xbox" topic="1003"/>-->
+            <!--<site name="游明星空游戏新闻" url="http://www.gamersky.com/news/tv/zx" topic="1005"/>-->
+            <!--<site name="游明星空游戏前瞻" url="http://www.gamersky.com/news/tv/qz" topic="1005"/>-->
+            <!--<site name="游明星空游戏评测" url="http://www.gamersky.com/review/tv" topic="1007"/>-->
+            <!--<site name="游明星空游戏硬件" url="http://www.gamersky.com/news/tv/hd" topic="1008"/>-->
+            <!--<site name="游明星空最新资讯" url="http://tv.gamersky.com" topic="1005"/>-->
+        <!--</sites>-->
+        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
+        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
+        <!--<rule>-->
+            <!--<blocks>-->
+                <!--<tag name="ul">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="class" value="pictxt block"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</blocks>-->
+            <!--<contents>-->
+                <!--<tag name="a">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="href"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</contents>-->
+            <!--<rule>-->
+                <!--<blocks>-->
+                    <!--<tag name="div">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="class" value="Mid2L_con"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</blocks>-->
+                <!--<contents>-->
+                    <!--<tag name="p"/>-->
+                    <!--<tag name="embed">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                    <!--<tag name="img">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</contents>-->
+            <!--</rule>-->
+        <!--</rule>-->
+    <!--</scheduler>-->
+    <!--<scheduler class="dataBaseScheduler">-->
+        <!--<sites>-->
+            <!--<site name="多玩WIIU" url="http://wiiu.duowan.com" topic="1000"/>-->
+            <!--<site name="多玩3DS" url="http://3ds.duowan.com" topic="1002"/>-->
+            <!--<site name="多玩XBOXONE" url="http://x1.duowan.com" topic="1003"/>-->
+            <!--<site name="多玩PS4" url="http://ps4.duowan.com" topic="1001"/>-->
+            <!--<site name="多玩PSV" url="http://psv.duowan.com" topic="1006"/>-->
+            <!--<site name="多玩业界咨询" url="http://tv.duowan.com/tag/57080898096.html" topic="1005"/>-->
+        <!--</sites>-->
+        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
+        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
+        <!--<rule>-->
+            <!--<blocks>-->
+                <!--<tag name="div">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="class" value="ui-box__content"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</blocks>-->
+            <!--<contents>-->
+                <!--<tag name="a">-->
+                    <!--<attributes>-->
+                        <!--<attribute key="href"/>-->
+                    <!--</attributes>-->
+                <!--</tag>-->
+            <!--</contents>-->
+            <!--<rule>-->
+                <!--<blocks>-->
+                    <!--<tag name="div">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="class" value="text"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</blocks>-->
+                <!--<contents>-->
+                    <!--<tag name="p"/>-->
+                    <!--<tag name="embed">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                    <!--<tag name="img">-->
+                        <!--<attributes>-->
+                            <!--<attribute key="src"/>-->
+                        <!--</attributes>-->
+                    <!--</tag>-->
+                <!--</contents>-->
+            <!--</rule>-->
+        <!--</rule>-->
+    <!--</scheduler>-->
+    <scheduler class="dataBaseScheduler">
+        <sites>
+            <site name="电玩巴士PSV" url="psv.tgbus.com/news" topic="1006"/>
+            <site name="电玩巴士PS4" url="ps4.tgbus.com/news" topic="1001"/>
+            <site name="电玩巴士3DS" url="3ds.tgbus.com/news" topic="1002"/>
+            <site name="电玩巴士XBOXONE" url="xboxone.tgbus.com/news" topic="1003"/>
+        </sites>
+        <spider class="com.supc.spider.spiders.DefaultSpider"/>
+        <downloader class="com.supc.spider.downloaders.DefaultDownloader"/>
+        <rule>
+            <blocks>
+                <tag name="div">
+                    <attributes>
+                        <attribute key="class" value="fl bc f14"/>
+                    </attributes>
+                </tag>
+            </blocks>
+            <contents>
+                <tag name="a">
+                    <attributes>
+                        <attribute key="href"/>
+                    </attributes>
+                </tag>
+            </contents>
             <rule>
                 <blocks>
                     <tag name="div">
                         <attributes>
-                            <attribute key="id" value="list-page"/>
+                            <attribute key="class" value="text"/>
                         </attributes>
                     </tag>
                 </blocks>
                 <contents>
-                    <tag name="a">
+                    <tag name="p"/>
+                    <tag name="embed">
                         <attributes>
-                            <attribute key="href"/>
+                            <attribute key="src"/>
+                        </attributes>
+                    </tag>
+                    <tag name="img">
+                        <attributes>
+                            <attribute key="src"/>
                         </attributes>
                     </tag>
                 </contents>
-                <rule>
-                    <blocks>
-                        <tag name="div">
-                            <attributes>
-                                <attribute key="class" value="text"/>
-                            </attributes>
-                        </tag>
-                    </blocks>
-                    <contents>
-                        <tag name="p"/>
-                        <tag name="embed">
-                            <attributes>
-                                <attribute key="src"/>
-                            </attributes>
-                        </tag>
-                        <tag name="img">
-                            <attributes>
-                                <attribute key="src"/>
-                            </attributes>
-                        </tag>
-                    </contents>
-                </rule>
             </rule>
-        </site>
-        <!--<site name="多玩3DS" url="http://3ds.duowan.com/tag/142633568628.html" topic="1002">-->
-            <!--<scheduler class="dataBaseScheduler"/>-->
-            <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-            <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-            <!--<rule>-->
-                <!--<blocks>-->
-                    <!--<tag name="div">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="id" value="list-page"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</blocks>-->
-                <!--<contents>-->
-                    <!--<tag name="a">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="href"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</contents>-->
-                <!--<rule>-->
-                    <!--<blocks>-->
-                        <!--<tag name="div">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="class" value="text"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</blocks>-->
-                    <!--<contents>-->
-                        <!--<tag name="p"/>-->
-                        <!--<tag name="embed">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                        <!--<tag name="img">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</contents>-->
-                <!--</rule>-->
-            <!--</rule>-->
-        <!--</site>-->
-
-        <!--<site name="多玩XBOXONE" url="http://tv.duowan.com/tag/233158035832.html" topic="1003">-->
-            <!--<scheduler class="dataBaseScheduler"/>-->
-            <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-            <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-            <!--<rule>-->
-                <!--<blocks>-->
-                    <!--<tag name="div">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="id" value="list-page"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</blocks>-->
-                <!--<contents>-->
-                    <!--<tag name="a">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="href"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</contents>-->
-                <!--<rule>-->
-                    <!--<blocks>-->
-                        <!--<tag name="div">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="class" value="text"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</blocks>-->
-                    <!--<contents>-->
-                        <!--<tag name="p"/>-->
-                        <!--<tag name="embed">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                        <!--<tag name="img">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</contents>-->
-                <!--</rule>-->
-            <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="多玩PS4" url="http://tv.duowan.com/tag/225381878701.html" topic="1001">-->
-            <!--<scheduler class="dataBaseScheduler"/>-->
-            <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-            <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-            <!--<rule>-->
-                <!--<blocks>-->
-                    <!--<tag name="div">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="id" value="list-page"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</blocks>-->
-                <!--<contents>-->
-                    <!--<tag name="a">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="href"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</contents>-->
-                <!--<rule>-->
-                    <!--<blocks>-->
-                        <!--<tag name="div">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="class" value="text"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</blocks>-->
-                    <!--<contents>-->
-                        <!--<tag name="p"/>-->
-                        <!--<tag name="embed">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                        <!--<tag name="img">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</contents>-->
-                <!--</rule>-->
-            <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="多玩PSV" url="http://psv.duowan.com/tag/173807760792.html" topic="1006">-->
-            <!--<scheduler class="dataBaseScheduler"/>-->
-            <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-            <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-            <!--<rule>-->
-                <!--<blocks>-->
-                    <!--<tag name="div">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="id" value="list-page"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</blocks>-->
-                <!--<contents>-->
-                    <!--<tag name="a">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="href"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</contents>-->
-                <!--<rule>-->
-                    <!--<blocks>-->
-                        <!--<tag name="div">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="class" value="text"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</blocks>-->
-                    <!--<contents>-->
-                        <!--<tag name="p"/>-->
-                        <!--<tag name="embed">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                        <!--<tag name="img">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</contents>-->
-                <!--</rule>-->
-            <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="多玩业界咨询" url="http://tv.duowan.com/tag/57080898096.html" topic="1005">-->
-            <!--<scheduler class="dataBaseScheduler"/>-->
-            <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-            <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-            <!--<rule>-->
-                <!--<blocks>-->
-                    <!--<tag name="div">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="id" value="list-page"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</blocks>-->
-                <!--<contents>-->
-                    <!--<tag name="a">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="href"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</contents>-->
-                <!--<rule>-->
-                    <!--<blocks>-->
-                        <!--<tag name="div">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="class" value="text"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</blocks>-->
-                    <!--<contents>-->
-                        <!--<tag name="p"/>-->
-                        <!--<tag name="embed">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                        <!--<tag name="img">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</contents>-->
-                <!--</rule>-->
-            <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="电玩巴士PSV" url="psv.tgbus.com/news" topic="1006">-->
-            <!--<scheduler class="dataBaseScheduler"/>-->
-            <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-            <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-            <!--<rule>-->
-                <!--<blocks>-->
-                    <!--<tag name="div">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="class" value="fl bc f14"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</blocks>-->
-                <!--<contents>-->
-                    <!--<tag name="a">-->
-                        <!--<attributes>-->
-                            <!--<attribute key="href"/>-->
-                        <!--</attributes>-->
-                    <!--</tag>-->
-                <!--</contents>-->
-                <!--<rule>-->
-                    <!--<blocks>-->
-                        <!--<tag name="div">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="class" value="text"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</blocks>-->
-                    <!--<contents>-->
-                        <!--<tag name="p"/>-->
-                        <!--<tag name="embed">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                        <!--<tag name="img">-->
-                            <!--<attributes>-->
-                                <!--<attribute key="src"/>-->
-                            <!--</attributes>-->
-                        <!--</tag>-->
-                    <!--</contents>-->
-                <!--</rule>-->
-            <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="电玩巴士PS4" url="ps4.tgbus.com/news" topic="1001">-->
-        <!--<scheduler class="dataBaseScheduler"/>-->
-        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-        <!--<rule>-->
-        <!--<blocks>-->
-        <!--<tag name="div">-->
-        <!--<attributes>-->
-        <!--<attribute key="class" value="fl bc f14"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</blocks>-->
-        <!--<contents>-->
-        <!--<tag name="a">-->
-        <!--<attributes>-->
-        <!--<attribute key="href"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</contents>-->
-        <!--<rule>-->
-        <!--<blocks>-->
-        <!--<tag name="div">-->
-        <!--<attributes>-->
-        <!--<attribute key="class" value="text"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</blocks>-->
-        <!--<contents>-->
-        <!--<tag name="p"/>-->
-        <!--<tag name="embed">-->
-        <!--<attributes>-->
-        <!--<attribute key="src"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--<tag name="img">-->
-        <!--<attributes>-->
-        <!--<attribute key="src"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</contents>-->
-        <!--</rule>-->
-        <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="电玩巴士3DS" url="3ds.tgbus.com/news" topic="1002">-->
-        <!--<scheduler class="dataBaseScheduler"/>-->
-        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-        <!--<rule>-->
-        <!--<blocks>-->
-        <!--<tag name="div">-->
-        <!--<attributes>-->
-        <!--<attribute key="class" value="fl bc f14"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</blocks>-->
-        <!--<contents>-->
-        <!--<tag name="a">-->
-        <!--<attributes>-->
-        <!--<attribute key="href"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</contents>-->
-        <!--<rule>-->
-        <!--<blocks>-->
-        <!--<tag name="div">-->
-        <!--<attributes>-->
-        <!--<attribute key="class" value="text"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</blocks>-->
-        <!--<contents>-->
-        <!--<tag name="p"/>-->
-        <!--<tag name="embed">-->
-        <!--<attributes>-->
-        <!--<attribute key="src"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--<tag name="img">-->
-        <!--<attributes>-->
-        <!--<attribute key="src"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</contents>-->
-        <!--</rule>-->
-        <!--</rule>-->
-        <!--</site>-->
-        <!--<site name="电玩巴士XBOXONE" url="xboxone.tgbus.com/news" topic="1003">-->
-        <!--<scheduler class="dataBaseScheduler"/>-->
-        <!--<spider class="com.supc.spider.spiders.DefaultSpider"/>-->
-        <!--<downloader class="com.supc.spider.downloaders.DefaultDownloader"/>-->
-        <!--<rule>-->
-        <!--<blocks>-->
-        <!--<tag name="div">-->
-        <!--<attributes>-->
-        <!--<attribute key="class" value="fl bc f14"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</blocks>-->
-        <!--<contents>-->
-        <!--<tag name="a">-->
-        <!--<attributes>-->
-        <!--<attribute key="href"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</contents>-->
-        <!--<rule>-->
-        <!--<blocks>-->
-        <!--<tag name="div">-->
-        <!--<attributes>-->
-        <!--<attribute key="class" value="text"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</blocks>-->
-        <!--<contents>-->
-        <!--<tag name="p"/>-->
-        <!--<tag name="embed">-->
-        <!--<attributes>-->
-        <!--<attribute key="src"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--<tag name="img">-->
-        <!--<attributes>-->
-        <!--<attribute key="src"/>-->
-        <!--</attributes>-->
-        <!--</tag>-->
-        <!--</contents>-->
-        <!--</rule>-->
-        <!--</rule>-->
-        <!--</site>-->
-    </sites>
+        </rule>
+    </scheduler>
 </cspider>

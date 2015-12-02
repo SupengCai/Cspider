@@ -15,7 +15,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cs_content")
-public class Content {
+public class ContentEntity {
 
     @Id
     @GeneratedValue(generator = "snowflake")

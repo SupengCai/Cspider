@@ -47,9 +47,9 @@ public class HtmlUtils {
         return matcher.find() ? matcher.group() : "";
     }
 
-    public static String validateUrl(String url,String domain) {
+    public static String validateUrl(String url, String host) {
 
-         if (StringUtils.isEmpty(url)) return "";
+        if (StringUtils.isEmpty(url)) return "";
 
         StringBuilder sb = new StringBuilder();
         Matcher mh = patternHttp.matcher(url);
@@ -59,13 +59,11 @@ public class HtmlUtils {
             sb.append(DOMAIN_HTTP);
 
         if (!md.find()) {
-            sb.append(domain);
+            sb.append(host);
             if (url.charAt(0) != '/')
                 sb.append('/');
-            sb.append(url);
-        } else {
-            sb.append(url);
         }
+        sb.append(url);
         return sb.toString();
 
     }

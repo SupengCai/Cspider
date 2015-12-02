@@ -6,18 +6,14 @@ import com.supc.spider.support.parser.ConfigurationParser;
 import org.dom4j.DocumentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 
 /**
@@ -59,10 +55,6 @@ public abstract class AbstractEngine {
      */
     public static Properties configuration = new Properties();
     /**
-     * The spider sites
-     */
-//    public static Map<String, Site> sites = new HashMap<>();
-    /**
      * Schedulers
      */
     public static List<Scheduler> schedulers = new ArrayList<>();
@@ -99,7 +91,9 @@ public abstract class AbstractEngine {
 
         initSpring();
 
-        createScheduler();
+        readConfigurations();
+
+        initScheduler();
 
         initialized = true;
     }
@@ -120,20 +114,18 @@ public abstract class AbstractEngine {
         List<File> files = FileUtils.findFiles(applicationPath, CSPIDER_PREFIX, new String[]{XML_SUFFIX, PROPERTIES_SUFFIX}, new ArrayList<>());
         logger.info("config files :" + files.size());
         for (File file : files) {
-            readConfiguration(file, schedulers);
+            readConfiguration(file);
         }
     }
 
-    private void createScheduler() {
+    private void initScheduler() {
         try {
-            readConfigurations();
-            for (Scheduler item : schedulers) {
-                Scheduler scheduler = item;
-                logger.info("scheduler name :" + scheduler.getName());
+            for (Scheduler scheduler : schedulers) {
                 scheduler.init(configuration);
+                logger.info("create scheduler class :" + scheduler.getClass());
             }
         } catch (Exception e) {
-            logger.error("创建DownLoaders失败");
+            logger.error("创建Scheduler失败");
             logger.error(e.toString());
             stop();
         }
@@ -144,8 +136,7 @@ public abstract class AbstractEngine {
             if (!initialized) {
                 init();
             }
-            for (Scheduler item : schedulers) {
-                Scheduler scheduler = item;
+            for (Scheduler scheduler : schedulers) {
                 scheduler.start();
             }
             started = true;
@@ -162,7 +153,7 @@ public abstract class AbstractEngine {
         }
     }
 
-    public void readConfiguration(File file, List<Scheduler> schedulers) {
+    public void readConfiguration(File file) {
         try {
             switch (FileUtils.getExtWithDot(file.getName())) {
                 case PROPERTIES_SUFFIX:

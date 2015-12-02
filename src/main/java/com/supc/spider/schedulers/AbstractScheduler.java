@@ -44,19 +44,23 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
      */
     public static ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(10);
     /**
-     * Site
+     * SiteEntity
      */
-    protected Site site;
+    private List<Site> sites;
     /**
-     * Downloaders
+     * Downloader
      */
-    protected Downloader downloader;
+    private Downloader downloader;
     /**
-     * Spiders
+     * Spider
      */
-    protected Spider spider;
+    private Spider spider;
     /**
-     * Scheduler
+     * Rule
+     */
+    private Rule rule;
+    /**
+     * ScheduledFuture
      */
     protected ScheduledFuture scheduledFuture;
     /**
@@ -105,8 +109,6 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
         if (!initialized) {
             DELAY_TIME = configuration.containsKey(ConfigurationParser.CSPIDER_SCHEDULER_DELAY) ? Integer.valueOf(configuration.getProperty(ConfigurationParser.CSPIDER_SCHEDULER_DELAY)) : 10;
             try {
-                downloader = (Downloader) Class.forName(site.getDownloader()).newInstance();
-                spider = (Spider) Class.forName(site.getSpider()).newInstance();
                 logger.info("downloader name :" + downloader.toString());
                 logger.info("spider name :" + spider.toString());
             } catch (Exception e) {
@@ -137,52 +139,64 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
     public void run() {
         logger.info("scheduler running ... :");
         Rule rule = getRule();
-        List<Element> list = spider.parseBlocks(downloader.httpGet(site.getUrl().toExternalForm()), rule);
-        addContents(list);
-        parseContents(rule.getSubRule());
-        clearContents(DEFAULT_MAX_CACHE_SIZE, DEFAULT_CACHE_CAPACITY);
+        for (Site site : sites) {
+            logger.info("site " + site.getName() + " is running ... :");
+            List<Element> elements = spider.parseBlocks(downloader.httpGet(site.getUrl().toExternalForm()), rule);
+            addContents(elements, site.getUrl().getHost());
+            parseContents(site, rule.getSubRule());
+            clearContents(DEFAULT_MAX_CACHE_SIZE, DEFAULT_CACHE_CAPACITY);
+            logger.info("site " + site.getName() + " is done :");
+        }
         logger.info("scheduler done.");
     }
 
     /**
-     * @param list
+     * Add Content objects to list which has not being parsed
+     *
+     * @param links
+     * @param host
      */
-    private void addContents(List<Element> list) {
-        for (Element e : list) {
-            if (!contentCache.contains(e)) {
-                contentList.add(e);
+    public void addContents(List<Element> links, String host) {
+        for (Element link : links) {
+            if (StringUtils.isNotEmpty(link.text()) && !contentCache.contains(link)) {
+                contentList.add(link);
                 Content content = new Content();
-                content.setTitle(e.text());
-                content.setUrl(e.attr(HtmlUtils.TAG_ATTRIBUTE_HREF));
+                content.setTitle(link.text());
+                content.setUrl(HtmlUtils.validateUrl(link.attr(HtmlUtils.TAG_ATTRIBUTE_HREF), host));
                 contents.add(content);
             }
         }
     }
 
     /**
+     * parse Contents of the Site with specific configuration rule
+     *
+     * @param site
      * @param rule
      */
-    public void parseContents(Rule rule) {
+    public void parseContents(Site site, Rule rule) {
 
         for (Content content : contents) {
-            List<Element> list = spider.parseBlocks(downloader.httpGet(HtmlUtils.validateUrl(content.getUrl(), site.getUrl().getHost())), rule);
-            if (!CollectionUtils.isEmpty(list)) {
-                parseContent(list, content.getSubContents(), rule.getContents());
+            List<Element> links = spider.parseBlocks(downloader.httpGet(HtmlUtils.validateUrl(content.getUrl(), site.getUrl().getHost())), rule);
+            if (!CollectionUtils.isEmpty(links)) {
+                parseContent(links, content.getSubContents(), rule.getContents());
             }
         }
     }
 
     /**
-     * @param elements
+     * Parse html to Content object
+     *
+     * @param links
      * @param subContents
-     * @param contents
+     * @param ruleContents
      */
-    private void parseContent(List<Element> elements, List<Content> subContents, Elements contents) {
+    private void parseContent(List<Element> links, List<Content> subContents, Elements ruleContents) {
         int index = 0;
-        for (Element element : elements) {
-            for (Element c : contents) {
-                if (element.tagName().equals(c.tagName())) {
-                    Content content = getContent(element, c.attributes(), index);
+        for (Element link : links) {
+            for (Element rule : ruleContents) {
+                if (link.tagName().equals(rule.tagName())) {
+                    Content content = getContent(link, rule.attributes(), index);
                     if (StringUtils.isNotEmpty(content.getContent())) {
                         subContents.add(content);
                         index++;
@@ -193,6 +207,8 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
     }
 
     /**
+     * Fill the Content attributes according to the configuration rule
+     *
      * @param element
      * @param attributes
      */
@@ -218,6 +234,8 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
     }
 
     /**
+     * Get type via tag name
+     *
      * @param tagName
      * @return
      */
@@ -242,10 +260,12 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
     }
 
     /**
+     * clear parsed contents chche
+     *
      * @param maxSize
      * @param percent
      */
-    protected void clearContents(int maxSize, double percent) {
+    public void clearContents(int maxSize, double percent) {
         contents.clear();
         contentCache.addAll(contentList);
         contentList.clear();
@@ -272,25 +292,25 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
     public boolean equals(Object obj) {
         if (obj instanceof AbstractScheduler) {
             AbstractScheduler other = (AbstractScheduler) obj;
-            return site.getName().equals(other.site.getName()) && site.getRule().equals(other.site.getRule());
+            return rule.equals(other.rule) && sites.equals(other.sites);
         }
         return false;
     }
 
     public Rule getRule() {
-        return this.site.getRule();
+        return this.rule;
     }
 
-    public String getName() {
-        return StringUtils.defaultString(site.getName(), StringUtils.EMPTY);
+    public void setRule(Rule rule) {
+        this.rule = rule;
     }
 
-    public Site getSite() {
-        return site;
+    public List<Site> getSites() {
+        return sites;
     }
 
-    public void setSite(Site site) {
-        this.site = site;
+    public void setSites(List<Site> sites) {
+        this.sites = sites;
     }
 
     public Downloader getDownloader() {

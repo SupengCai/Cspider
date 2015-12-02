@@ -1,6 +1,6 @@
 package com.supc.model.service;
 
-import com.supc.model.entity.Site;
+import com.supc.model.entity.SiteEntity;
 import com.supc.spider.support.hibernate.HibernateRepo;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
  * @version V1.0, 15/11/21
  */
 @Component
-public class SiteService extends HibernateRepo<Site> {
+public class SiteService extends HibernateRepo<SiteEntity> {
 
     @Autowired
     @Override
@@ -25,11 +25,11 @@ public class SiteService extends HibernateRepo<Site> {
     }
 
     public SiteService() {
-        super(Site.class);
+        super(SiteEntity.class);
     }
 
-    public Site getByUrl(String url) {
-        List<Site> list = find("select * from cs_site where url='" + url + "'");
+    public SiteEntity getByUrl(String url) {
+        List<SiteEntity> list = find("select * from cs_site where url='" + url + "'");
         return list.isEmpty() ? null : list.get(0);
     }
 }

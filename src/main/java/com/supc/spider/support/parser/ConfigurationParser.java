@@ -1,6 +1,8 @@
 package com.supc.spider.support.parser;
 
+import com.supc.spider.Downloader;
 import com.supc.spider.Scheduler;
+import com.supc.spider.Spider;
 import com.supc.spider.entity.Rule;
 import com.supc.spider.entity.Site;
 import com.supc.spider.utils.HtmlUtils;
@@ -13,9 +15,11 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.util.CollectionUtils;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +63,7 @@ public class ConfigurationParser {
      */
     public static final String CSPIDER_ENGINE = "cspider.engine";
     public static final String CSPIDER_SCHEDULER_DELAY = "cspider.scheduler.delay";
+    public static final String CSPIDER_CACHE_EXPIRE = "cspider.cache.expire";
 
     /**
      * Fill Engine's sites list with XML config file
@@ -71,10 +76,10 @@ public class ConfigurationParser {
         SAXReader saxReader = new SAXReader();
         org.dom4j.Document doc = saxReader.read(file);
         Element root = doc.getRootElement();
-        Element sitesNode = root.element(NODE_SITES);
-        if (sitesNode != null) {
-            for (Iterator it = sitesNode.elementIterator(NODE_SITE); it.hasNext(); ) {
-                Scheduler scheduler = createScheduler((Element) it.next(), applicationContext);
+        List<Element> nodes = root.elements(NODE_SCHEDULER);
+        if (!CollectionUtils.isEmpty(nodes)) {
+            for (Element node : nodes) {
+                Scheduler scheduler = createScheduler(node, applicationContext);
                 if (!schedulers.contains(scheduler))
                     schedulers.add(scheduler);
             }
@@ -82,27 +87,54 @@ public class ConfigurationParser {
     }
 
     /**
-     * Create Site object by <site> element
+     * Create Scheduler object by <scheduler> element
      *
-     * @param siteNode
+     * @param node
      * @return
      */
-    public static Scheduler createScheduler(Element siteNode, GenericApplicationContext applicationContext) {
-        Scheduler scheduler = null;
+    public static Scheduler createScheduler(Element node, GenericApplicationContext applicationContext) {
+        Scheduler scheduler = (Scheduler) applicationContext.getBean(node.attributeValue(ATTRIBUTE_CLASS));
         try {
-            URL url = new URL(HtmlUtils.validateUrl(siteNode.attributeValue(ATTRIBUTE_URL), StringUtils.EMPTY));
-            Rule rule = createRule(new Rule(), siteNode.element(NODE_RULE));
-            Site site = new Site(siteNode.attributeValue(ATTRIBUTE_NAME), url,
-                    siteNode.attributeValue(ATTRIBUTE_TOPIC), rule,
-                    siteNode.element(NODE_SCHEDULER).attributeValue(ATTRIBUTE_CLASS),
-                    siteNode.element(NODE_SPIDER).attributeValue(ATTRIBUTE_CLASS),
-                    siteNode.element(NODE_DOWNLOADER).attributeValue(ATTRIBUTE_CLASS));
-            scheduler = (Scheduler) applicationContext.getBean(site.getScheduler());
-            scheduler.setSite(site);
+            String downloaderClazz = node.element(NODE_DOWNLOADER).attributeValue(ATTRIBUTE_CLASS);
+            String spiderClazz = node.element(NODE_SPIDER).attributeValue(ATTRIBUTE_CLASS);
+
+            Downloader downloader = (Downloader) Class.forName(downloaderClazz).newInstance();
+            Spider spider = (Spider) Class.forName(spiderClazz).newInstance();
+            Rule rule = createRule(new Rule(), node.element(NODE_RULE));
+
+            List<Site> sites = new ArrayList<>();
+            List<Element> sitesNode = node.element(NODE_SITES).elements(NODE_SITE);
+            for (Element siteNode : sitesNode) {
+                Site site = createSite(siteNode);
+                if (!sites.contains(site)) {
+                    sites.add(site);
+                }
+            }
+            scheduler.setRule(rule);
+            scheduler.setDownloader(downloader);
+            scheduler.setSpider(spider);
+            scheduler.setSites(sites);
         } catch (Exception e) {
             logger.error(e.toString());
         }
         return scheduler;
+    }
+
+    /**
+     * Create site object by <site> element
+     *
+     * @param node
+     * @return
+     */
+    private static Site createSite(Element node) {
+        Site site = null;
+        try {
+            URL url = new URL(HtmlUtils.validateUrl(node.attributeValue(ATTRIBUTE_URL), StringUtils.EMPTY));
+            site = new Site(node.attributeValue(ATTRIBUTE_NAME), url, node.attributeValue(ATTRIBUTE_TOPIC));
+        } catch (Exception e) {
+            logger.error(e.toString());
+        }
+        return site;
     }
 
     /**

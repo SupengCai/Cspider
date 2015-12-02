@@ -15,7 +15,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cs_site", uniqueConstraints = {@UniqueConstraint(columnNames = {"url"})})
-public class Site {
+public class SiteEntity {
 
     @Id
     @GeneratedValue(generator = "snowflake")

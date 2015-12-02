@@ -2,6 +2,7 @@ package com.supc.spider;
 
 import com.supc.spider.entity.Rule;
 import com.supc.spider.entity.Site;
+import org.jsoup.nodes.Element;
 
 import java.util.List;
 import java.util.Properties;
@@ -45,14 +46,22 @@ public interface Scheduler {
 
     void stop();
 
-    String getName();
-
-    void setSite(Site site);
 
     Rule getRule();
 
-    void parseContents(Rule rule);
+    void parseContents(Site site, Rule rule);
 
     void run();
 
+    void setDownloader(Downloader downloaders);
+
+    void setSpider(Spider spiders);
+
+    void setRule(Rule rule);
+
+    void setSites(List<Site> sites);
+
+    void addContents(List<Element> elements, String host);
+
+    void clearContents(int maxSize, double percent);
 }

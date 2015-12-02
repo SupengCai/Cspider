@@ -65,10 +65,10 @@ public class HttpClientFactory {
         headers.put("Accept-Encoding", "gzip, deflate");
         headers.put("Accept-Language", "zh-cn,zh;q=0.5");
         headers.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2");
-//            httpPostOrGet.put("Connection", "keep-alive");
-//            httpPostOrGet.put("Cookie", "__utma=226521935.73826752.1323672782.1325068020.1328770420.6;");
-//            httpPostOrGet.put("Host", "www.cnblogs.com");
-//            httpPostOrGet.put("refer", "http://www.baidu.com/s?tn=monline_5_dg&bs=httpclient4+MultiThreadedHttpConnectionManager");
+        headers.put("Connection", "keep-alive");
+        headers.put("Host", "www.baidu.com");
+//            headers.put("Cookie", "__utma=226521935.73826752.1323672782.1325068020.1328770420.6;");
+//            headers.put("refer", "http://www.baidu.com/s?tn=monline_5_dg&bs=httpclient4+MultiThreadedHttpConnectionManager");
         defaultHeaders = headers;
     }
 

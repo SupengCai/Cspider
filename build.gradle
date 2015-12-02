@@ -35,6 +35,9 @@ dependencies {
     compile(
             'org.springframework:spring-context:4.2.2.RELEASE',
             'org.hibernate:hibernate-core:5.0.4.Final',
+            'org.springframework.data:spring-data-redis:1.6.1.RELEASE',
+            'com.esotericsoftware:kryo:3.0.3',
+            'redis.clients:jedis:2.8.0',
             'org.springframework:spring-orm:4.2.2.RELEASE',
             'javax.transaction:jta:1.1'
     )
