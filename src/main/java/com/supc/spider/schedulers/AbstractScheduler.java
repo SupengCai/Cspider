@@ -123,7 +123,7 @@ public abstract class AbstractScheduler implements Scheduler, Runnable {
             if (!initialized) throw new RuntimeException("call init() before start the scheduler");
             synchronized (Scheduler.class) {
                 logger.info("scheduler start :");
-                scheduledFuture = scheduledExecutorService.scheduleWithFixedDelay(this, 2 * DELAY_COUNT++, DELAY_TIME, TimeUnit.SECONDS);
+                scheduledFuture = scheduledExecutorService.scheduleWithFixedDelay(this, 2 * DELAY_COUNT++, DELAY_TIME, TimeUnit.MINUTES);
             }
             started = true;
         }
