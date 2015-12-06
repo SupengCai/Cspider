@@ -93,7 +93,7 @@
         <property name="port" value="${redis.port}"/>
         <property name="timeout" value="${redis.timeout}"/>
         <constructor-arg index="0" ref="jedisPoolConfig"/>
-        <!--<property name="password" value="${redis.pass}"/>-->
+        <property name="password" value="${redis.pass}"/>
     </bean>
 
     <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
